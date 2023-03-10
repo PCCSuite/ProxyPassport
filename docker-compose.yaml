@@ -1,0 +1,14 @@
+version: '3'
+services:
+  squid:
+    image: ghcr.io/pccsuite/proxypassport:latest
+    volumes:
+      - type: bind
+        source: config.json
+        target: /data/config.json
+    environment:
+      - PROXYPASSPORT_ACL=10.5.25.192/26
+    ports:
+      - "11611:11611"
+    restart: unless-stopped
+    pull_policy: always
