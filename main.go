@@ -144,6 +144,10 @@ func (h *aclCheckHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func checkACL(rawAddr string) bool {
+	if acl == nil {
+		return true
+	}
+	
 	ip := net.ParseIP(rawAddr)
 	acl := []*net.IPNet{}
 	for _, v := range acl {
