@@ -149,7 +149,6 @@ func checkACL(rawAddr string) bool {
 	}
 	
 	ip := net.ParseIP(rawAddr)
-	acl := []*net.IPNet{}
 	for _, v := range acl {
 		if v.Contains(ip) {
 			return true
